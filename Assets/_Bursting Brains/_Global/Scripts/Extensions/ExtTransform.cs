@@ -1,0 +1,10 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public static class ExtTransform {    
+	public static Transform FindChild_BB(this Transform transform, string childName){
+		Transform result = transform.FindChild(childName);
+		Assert_BB.AssertNotNull(result);
+        return result;
+	}
+}
