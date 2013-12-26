@@ -20,6 +20,8 @@ public class GameFlow {
 	public static readonly IGameState gsMode3 			= new GSMode3();
 	public static readonly IGameState gsEndGame 		= new GSEndGame();
 	
+	public static readonly IGameState gsMock 			= new GSMock();
+	
 	public static IGameState GetInitialGameState() {
 		return gsInitializeApplication;
 	}

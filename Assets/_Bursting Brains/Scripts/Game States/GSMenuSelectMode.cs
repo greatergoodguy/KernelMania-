@@ -3,46 +3,53 @@ using System.Collections;
 
 public class GSMenuSelectMode : GameStateBase {
 
-	CtrlUIMenuStart 		ctrlUIMenuStart;
 	CtrlUIMenuSelectMode 	ctrlUIMenuSelectMode;
 	
-	CtrlUIDebug 			ctrlUIDebug;
+	bool isFinished				= false;
+	IGameState nextGameState 	= GameFlow.gsMock;
 	
 	public GSMenuSelectMode() {
-		ctrlUIMenuStart 		= FactoryOfControllers.GetControllerUIMenuStart();
 		ctrlUIMenuSelectMode 	= FactoryOfControllers.GetControllerUIMenuSelectMode();
-		
-		ctrlUIDebug				= FactoryOfControllers.GetControllerUIDebug();
 	}
 	
 	public override void StartState() {
 		base.StartState();
 		
-		ctrlUIMenuStart.SetVisibility(false);
 		ctrlUIMenuSelectMode.SetVisibility(true);
 		
 		ctrlUIMenuSelectMode.SetDelButtonMode1(Mode1Pressed);
 		ctrlUIMenuSelectMode.SetDelButtonMode2(Mode2Pressed);
 		ctrlUIMenuSelectMode.SetDelButtonMode3(Mode3Pressed);
+		
+		isFinished = false;
+		nextGameState = GameFlow.gsMock;
 	} 
 	
+	public override void ExitState () {
+		base.ExitState ();
+		
+		ctrlUIMenuSelectMode.SetVisibility(false);
+	}
+	
 	public override bool IsFinished() {
-		return false;
+		return isFinished;
 	}
 	
 	public override IGameState GetNextGameState() {
-		return null;
+		return nextGameState;
 	}
 	
 	public void Mode1Pressed() {
-		ctrlUIDebug.SetVisibility(false);
+		isFinished = true;
+		nextGameState = GameFlow.gsMode1;
 	}
 	
 	public void Mode2Pressed() {
-		ctrlUIDebug.SetVisibility(true);
+		isFinished = true;
+		nextGameState = GameFlow.gsMode2;
 	}
 	public void Mode3Pressed() {
-		bool isUIDebugVisible = ctrlUIDebug.IsVisible();
-		ctrlUIDebug.SetVisibility(!isUIDebugVisible);
+		isFinished = true;
+		nextGameState = GameFlow.gsMode3;
 	}
 }

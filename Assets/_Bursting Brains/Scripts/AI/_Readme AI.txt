@@ -1,0 +1,1 @@
+AI are scripts that extend MonoBehaviour, and they are designed so that they can be added to any Prefab at runtime. They should be lightweight and generic. For example, AIRotate will rotate a prefab. 

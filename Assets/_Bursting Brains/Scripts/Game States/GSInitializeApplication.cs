@@ -16,6 +16,7 @@ public class GSInitializeApplication : GameStateBase {
 	}
 	
 	public override IGameState GetNextGameState() {
-		return GameFlow.gsMenuStart;
+		//return GameFlow.gsMenuStart;
+		return GameFlow.gsMode1;
 	}
 }
