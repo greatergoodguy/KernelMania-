@@ -3,24 +3,36 @@ using System.Collections;
 
 public class PopcornMachine : MonoBehaviour {
 	
-	private static float TIMER_SPAWN_KERNEL = 3.0f;
+	private static readonly float FORCE_LAUNCH_MIN = 150;
+	private static readonly float FORCE_LAUNCH_MAX = 300;
 	
-	float timer = 0;
+	Vector3 spawnLocalPosition = new Vector3(0, 0, -1);
 	
-	void Update () {
-		timer += Time.deltaTime;
+	public float angleInDegrees = 90;
+	
+	public void SpawnKernel() {
+		GameObject popcornKernelGO = FactoryOfPrefabs.CreateGOPopcornKernel();	
 		
-		if(timer >= TIMER_SPAWN_KERNEL) {
-			timer = 0;
-			GameObject popcornKernelGO = FactoryOfPrefabs.CreateGOPopcornKernel();	
-			popcornKernelGO.AddComponent<AITranslate>();
-			popcornKernelGO.AddComponent<AIDestroy>();
-			
-			AddChild(popcornKernelGO);
-		}	
+		popcornKernelGO.AddComponent<AIDestroy>();
+		popcornKernelGO.transform.parent = transform;	
+		popcornKernelGO.transform.localPosition = spawnLocalPosition;
+		
+		float angleInRadians = angleInDegrees * Mathf.Deg2Rad;
+		float forceX = FORCE_LAUNCH_MIN * Mathf.Cos(angleInRadians);
+		float forceY = FORCE_LAUNCH_MIN * Mathf.Sin(angleInRadians);
+		
+		//popcornKernelGO.rigidbody.AddForce(forceX, forceY, 0);
 	}
 	
-	void AddChild(GameObject childGO) {
-		childGO.transform.parent = transform;	
+	public void TurnOff() {
+		gameObject.SetActive(false);
+	}
+	
+	public void TurnOn() {
+		gameObject.SetActive(true);
+	}
+	
+	public bool IsMachineOn() {
+		return gameObject.activeSelf;
 	}
 }

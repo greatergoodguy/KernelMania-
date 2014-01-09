@@ -6,9 +6,11 @@ public class PopcornKernel : MonoBehaviour {
 	readonly bool isPlatformMobile = UtilPlatform.IsMobile();
 	
 	CtrlUIDebug ctrlUIDebug;
+	CtrlUIGameplay ctrlUIGameplay;
 	
 	void Start () {
 		ctrlUIDebug = FactoryOfControllers.GetControllerUIDebug();
+		ctrlUIGameplay = FactoryOfControllers.GetControllerUIGameplay();
 	}
 	
 	void Update() {
@@ -31,11 +33,7 @@ public class PopcornKernel : MonoBehaviour {
 	}
 	
 	void OnClickDown() {
-		
-	}
-	
-	void OnClickUp() {
-		
+		ctrlUIGameplay.IncreaseScore(30);	
 	}
 	
 	//=====================================
@@ -45,7 +43,6 @@ public class PopcornKernel : MonoBehaviour {
 	// We use the preprocessor here instead of the UtilPlatform
 	// class because Unity will complain about the inclusion of the 
 	// OnMouse_ callback methods
-	#if !(UNITY_IPHONE || UNITY_ANDROID)
 	void OnMouseDown() {
 		ctrlUIDebug.SetText1TM("PopcornKernel: OnMouseDown");
 		OnClickDown();
@@ -53,7 +50,5 @@ public class PopcornKernel : MonoBehaviour {
 	
 	void OnMouseUpAsButton() {
 		ctrlUIDebug.SetText1TM("PopcornKernel: OnMouseUpAsButton");
-		OnClickUp();
 	}
-	#endif
 }

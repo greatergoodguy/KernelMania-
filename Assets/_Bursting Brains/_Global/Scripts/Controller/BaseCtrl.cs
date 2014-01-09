@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class ControllerBaseMB : MonoBehaviour{
+public abstract class BaseCtrl : MonoBehaviour{
 		
 	public void SetVisibility(bool isVisible) {
 		if(isVisible) 	gameObject.SetActive(true);

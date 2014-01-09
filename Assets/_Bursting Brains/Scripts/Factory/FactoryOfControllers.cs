@@ -3,12 +3,6 @@ using System.Collections;
 
 public static class FactoryOfControllers {
 	
-	public static void ExecuteAllGetMethods() {
-		GetControllerUIDebug();
-		GetControllerUIMenuStart();	
-		GetControllerUIMenuSelectMode();
-	}
-	
 	static CtrlUIDebug ctrlUIDebug;
 	public static CtrlUIDebug GetControllerUIDebug() {
 		if(ctrlUIDebug == null)
@@ -31,5 +25,22 @@ public static class FactoryOfControllers {
         	ctrlUIMenuSelectMode = GameObject.Find("UI Menu Select Mode").GetComponent_BB<CtrlUIMenuSelectMode>();
                 
     	return ctrlUIMenuSelectMode;
+	}
+	
+	static CtrlGameplay ctrlGameplay;
+	public static CtrlGameplay GetControllerGameplay() {
+		if(ctrlGameplay == null)
+        	ctrlGameplay = GameObject.Find("Gameplay").GetComponent_BB<CtrlGameplay>();
+                
+    	return ctrlGameplay;
+	}
+	
+	
+	static CtrlUIGameplay ctrlUIGameplay;
+	public static CtrlUIGameplay GetControllerUIGameplay() {
+		if(ctrlUIGameplay == null)
+        	ctrlUIGameplay = GameObject.Find("UI Gameplay").GetComponent_BB<CtrlUIGameplay>();
+                
+    	return ctrlUIGameplay;
 	}
 }

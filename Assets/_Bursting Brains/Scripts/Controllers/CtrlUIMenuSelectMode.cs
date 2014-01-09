@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class CtrlUIMenuSelectMode : ControllerBaseMB {
+public class CtrlUIMenuSelectMode : BaseCtrl {
 	
 	DelButton delButtonMode1 = UtilMock.MockFunction;
 	DelButton delButtonMode2 = UtilMock.MockFunction;

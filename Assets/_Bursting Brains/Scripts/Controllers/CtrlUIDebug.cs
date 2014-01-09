@@ -1,11 +1,15 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class CtrlUIDebug : ControllerBaseMB {
+public class CtrlUIDebug : BaseCtrl {
 	
-	private tk2dTextMesh text1TM;
+	CtrlUIGameplay ctrlUIGameplay;
 	
-	void Awake() {	
+	tk2dTextMesh text1TM;
+	
+	void Awake() {
+		ctrlUIGameplay = FactoryOfControllers.GetControllerUIGameplay();
+		
 		text1TM = transform.FindChild_BB("Text 1").GetComponent_BB<tk2dTextMesh>();
 		
 		SetPositionToOrigin();
