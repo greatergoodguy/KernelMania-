@@ -1,20 +1,23 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GSMode1 : GameStateBase {
 	
 	private static float TIMER_SPAWN_KERNEL = 2.0f;
 	
+	CtrlAudio ctrlAudio;
 	CtrlGameplay ctrlGameplay;
 	
 	float timer = 0;
 	
 	public GSMode1() {
-		ctrlGameplay = FactoryOfControllers.GetControllerGameplay();
+		ctrlAudio = FactoryOfControllers.GetCtrlAudio();
+		ctrlGameplay = FactoryOfControllers.GetCtrlGameplay();
 	}
 	
 	public override void StartState() {
 		base.StartState();
+		ctrlAudio.MusicPlay();
 		ctrlGameplay.TurnOnAllPopcornMachines();
 	}
 	
@@ -32,6 +35,7 @@ public class GSMode1 : GameStateBase {
 	public override void ExitState () {
 		base.ExitState();
 		ctrlGameplay.TurnOffAllPopcornMachines();
+		ctrlAudio.MusicStop();
 	}
 	
 	public override bool IsFinished() {

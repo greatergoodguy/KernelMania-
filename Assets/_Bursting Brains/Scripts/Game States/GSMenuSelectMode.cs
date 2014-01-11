@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GSMenuSelectMode : GameStateBase {
@@ -9,7 +9,7 @@ public class GSMenuSelectMode : GameStateBase {
 	IGameState nextGameState 	= GameFlow.gsMock;
 	
 	public GSMenuSelectMode() {
-		ctrlUIMenuSelectMode 	= FactoryOfControllers.GetControllerUIMenuSelectMode();
+		ctrlUIMenuSelectMode 	= FactoryOfControllers.GetCtrlUIMenuSelectMode();
 	}
 	
 	public override void StartState() {

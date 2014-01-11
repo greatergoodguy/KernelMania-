@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GSMenuStart : GameStateBase {
@@ -8,7 +8,7 @@ public class GSMenuStart : GameStateBase {
 	bool isFinished = false;
 	
 	public GSMenuStart() {
-		ctrlUIMenuStart = FactoryOfControllers.GetControllerUIMenuStart();
+		ctrlUIMenuStart = FactoryOfControllers.GetCtrlUIMenuStart();
 	}
 	
 	public override void StartState() {

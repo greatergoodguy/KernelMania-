@@ -4,7 +4,7 @@ using System.Collections;
 public static class FactoryOfControllers {
 	
 	static CtrlUIDebug ctrlUIDebug;
-	public static CtrlUIDebug GetControllerUIDebug() {
+	public static CtrlUIDebug GetCtrlUIDebug() {
 		if(ctrlUIDebug == null)
         	ctrlUIDebug = GameObject.Find("UI Debug").GetComponent_BB<CtrlUIDebug>();
                 
@@ -12,7 +12,7 @@ public static class FactoryOfControllers {
 	}
 	
 	static CtrlUIMenuStart ctrlUIMenuStart;
-	public static CtrlUIMenuStart GetControllerUIMenuStart() {
+	public static CtrlUIMenuStart GetCtrlUIMenuStart() {
 		if(ctrlUIMenuStart == null)
         	ctrlUIMenuStart = GameObject.Find("UI Menu Start").GetComponent_BB<CtrlUIMenuStart>();
                 
@@ -20,7 +20,7 @@ public static class FactoryOfControllers {
 	}
 	
 	static CtrlUIMenuSelectMode ctrlUIMenuSelectMode;
-	public static CtrlUIMenuSelectMode GetControllerUIMenuSelectMode() {
+	public static CtrlUIMenuSelectMode GetCtrlUIMenuSelectMode() {
 		if(ctrlUIMenuSelectMode == null)
         	ctrlUIMenuSelectMode = GameObject.Find("UI Menu Select Mode").GetComponent_BB<CtrlUIMenuSelectMode>();
                 
@@ -28,7 +28,7 @@ public static class FactoryOfControllers {
 	}
 	
 	static CtrlGameplay ctrlGameplay;
-	public static CtrlGameplay GetControllerGameplay() {
+	public static CtrlGameplay GetCtrlGameplay() {
 		if(ctrlGameplay == null)
         	ctrlGameplay = GameObject.Find("Gameplay").GetComponent_BB<CtrlGameplay>();
                 
@@ -37,10 +37,19 @@ public static class FactoryOfControllers {
 	
 	
 	static CtrlUIGameplay ctrlUIGameplay;
-	public static CtrlUIGameplay GetControllerUIGameplay() {
+	public static CtrlUIGameplay GetCtrlUIGameplay() {
 		if(ctrlUIGameplay == null)
         	ctrlUIGameplay = GameObject.Find("UI Gameplay").GetComponent_BB<CtrlUIGameplay>();
                 
     	return ctrlUIGameplay;
+	}
+	
+	
+	static CtrlAudio ctrlAudio;
+	public static CtrlAudio GetCtrlAudio() {
+		if(ctrlAudio == null)
+        	ctrlAudio = GameObject.Find("Audio").GetComponent_BB<CtrlAudio>();
+                
+    	return ctrlAudio;
 	}
 }

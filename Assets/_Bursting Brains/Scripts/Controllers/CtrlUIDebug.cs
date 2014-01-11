@@ -8,7 +8,7 @@ public class CtrlUIDebug : BaseCtrl {
 	tk2dTextMesh text1TM;
 	
 	void Awake() {
-		ctrlUIGameplay = FactoryOfControllers.GetControllerUIGameplay();
+		ctrlUIGameplay = FactoryOfControllers.GetCtrlUIGameplay();
 		
 		text1TM = transform.FindChild_BB("Text 1").GetComponent_BB<tk2dTextMesh>();
 		

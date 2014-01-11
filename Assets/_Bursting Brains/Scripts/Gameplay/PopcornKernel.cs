@@ -1,16 +1,17 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PopcornKernel : MonoBehaviour {
 	
+	readonly int SCORE_AMOUNT = 1000;
 	readonly bool isPlatformMobile = UtilPlatform.IsMobile();
 	
 	CtrlUIDebug ctrlUIDebug;
 	CtrlUIGameplay ctrlUIGameplay;
 	
 	void Start () {
-		ctrlUIDebug = FactoryOfControllers.GetControllerUIDebug();
-		ctrlUIGameplay = FactoryOfControllers.GetControllerUIGameplay();
+		ctrlUIDebug = FactoryOfControllers.GetCtrlUIDebug();
+		ctrlUIGameplay = FactoryOfControllers.GetCtrlUIGameplay();
 	}
 	
 	void Update() {
@@ -33,7 +34,10 @@ public class PopcornKernel : MonoBehaviour {
 	}
 	
 	void OnClickDown() {
-		ctrlUIGameplay.IncreaseScore(30);	
+		ctrlUIGameplay.IncreaseScore(SCORE_AMOUNT);	
+		GameObject popcornPoppedGO = FactoryOfPrefabs.CreateGOPopcornPopped();
+		popcornPoppedGO.transform.position = transform.position;
+		Destroy(gameObject);
 	}
 	
 	//=====================================

@@ -15,4 +15,17 @@ public static class FactoryOfPrefabs {
 
 		return popcornKernelT.gameObject;
 	}
+	
+	static GameObject popcornPoppedGO;
+	public static GameObject CreateGOPopcornPopped() {
+		if(popcornPoppedGO == null) {
+			popcornPoppedGO = Resources.Load("Popcorn Popped") as GameObject;
+			Assert_BB.AssertNotNull(popcornPoppedGO);
+		}
+                
+		Transform popcornPoppedT = MonoBehaviour.Instantiate(popcornPoppedGO.transform, Vector3.zero, Quaternion.identity) as Transform;
+		Assert_BB.Assert(popcornPoppedT != null);
+
+		return popcornPoppedT.gameObject;
+	}
 }
