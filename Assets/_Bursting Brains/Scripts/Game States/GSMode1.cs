@@ -5,20 +5,38 @@ public class GSMode1 : GameStateBase {
 	
 	private static float TIMER_SPAWN_KERNEL = 2.0f;
 	
-	CtrlAudio ctrlAudio;
-	CtrlGameplay ctrlGameplay;
+	CtrlBackground 	ctrlBackground;
+	CtrlAudio 		ctrlAudio;
+	CtrlGameplay 	ctrlGameplay;
+	CtrlUIGameplay 	ctrlUIGameplay;
+	
+	CtrlUIDebug ctrlUIDebug;
 	
 	float timer = 0;
+	bool isFinished = false;
 	
 	public GSMode1() {
-		ctrlAudio = FactoryOfControllers.GetCtrlAudio();
-		ctrlGameplay = FactoryOfControllers.GetCtrlGameplay();
+		ctrlBackground	= FactoryOfControllers.GetCtrlBackground();
+		ctrlAudio 		= FactoryOfControllers.GetCtrlAudio();
+		ctrlGameplay 	= FactoryOfControllers.GetCtrlGameplay();
+		ctrlUIGameplay 	= FactoryOfControllers.GetCtrlUIGameplay();
+		
+		ctrlUIDebug = FactoryOfControllers.GetCtrlUIDebug();
 	}
 	
 	public override void StartState() {
 		base.StartState();
+		ctrlBackground.SetBgTheater();
 		ctrlAudio.MusicPlay();
 		ctrlGameplay.TurnOnAllPopcornMachines();
+		
+		ctrlUIGameplay.SetVisible(true);
+		ctrlUIGameplay.TimerSet();
+		ctrlUIGameplay.TimerStart();
+		ctrlUIGameplay.SetDelOnTimerFinish(OnTimerFinish);
+		
+		timer = 0;
+		isFinished = false;
 	}
 	
 	public override void Update () {
@@ -34,8 +52,11 @@ public class GSMode1 : GameStateBase {
 	
 	public override void ExitState () {
 		base.ExitState();
+		ctrlBackground.SetBgGray();
 		ctrlGameplay.TurnOffAllPopcornMachines();
 		ctrlAudio.MusicStop();
+		
+		ctrlUIGameplay.SetVisible(false);
 	}
 	
 	public override bool IsFinished() {
@@ -44,5 +65,9 @@ public class GSMode1 : GameStateBase {
 	
 	public override IGameState GetNextGameState() {
 		return null;
+	}
+	
+	private void OnTimerFinish() {
+		isFinished = true;
 	}
 }

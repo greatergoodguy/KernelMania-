@@ -52,4 +52,12 @@ public static class FactoryOfControllers {
                 
     	return ctrlAudio;
 	}
+	
+	static CtrlBackground ctrlBackground;
+	public static CtrlBackground GetCtrlBackground() {
+		if(ctrlBackground == null)
+        	ctrlBackground = GameObject.Find("Background").GetComponent_BB<CtrlBackground>();
+                
+    	return ctrlBackground;
+	}
 }

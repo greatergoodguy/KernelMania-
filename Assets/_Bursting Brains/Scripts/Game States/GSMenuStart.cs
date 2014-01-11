@@ -14,14 +14,14 @@ public class GSMenuStart : GameStateBase {
 	public override void StartState() {
 		base.StartState();
 		
-		ctrlUIMenuStart.SetVisibility(true);
+		ctrlUIMenuStart.SetVisible(true);
 		ctrlUIMenuStart.SetDelButtonPlayGame(PlayGamePressed);
 	} 
 	
 	public override void ExitState() {
 		base.StartState();
 		
-		ctrlUIMenuStart.SetVisibility(false);
+		ctrlUIMenuStart.SetVisible(false);
 	} 
 	
 	public override bool IsFinished() {

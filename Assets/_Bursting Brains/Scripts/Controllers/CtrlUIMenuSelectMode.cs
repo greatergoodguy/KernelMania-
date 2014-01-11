@@ -8,7 +8,7 @@ public class CtrlUIMenuSelectMode : BaseCtrl {
 	DelButton delButtonMode3 = UtilMock.MockFunction;
 	
 	void Start () {
-		SetVisibility(false);
+		SetVisible(false);
 		SetPositionToOrigin();
 	}
 	

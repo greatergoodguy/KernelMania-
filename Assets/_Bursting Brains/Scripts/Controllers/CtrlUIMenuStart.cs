@@ -6,7 +6,7 @@ public class CtrlUIMenuStart : BaseCtrl {
 	DelButton delButtonPlayGame = UtilMock.MockFunction;
 	
 	void Start() {
-		SetVisibility(false);
+		SetVisible(false);
 		SetPositionToOrigin();
 	}
 	

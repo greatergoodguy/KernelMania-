@@ -15,7 +15,7 @@ public class GSMenuSelectMode : GameStateBase {
 	public override void StartState() {
 		base.StartState();
 		
-		ctrlUIMenuSelectMode.SetVisibility(true);
+		ctrlUIMenuSelectMode.SetVisible(true);
 		
 		ctrlUIMenuSelectMode.SetDelButtonMode1(Mode1Pressed);
 		ctrlUIMenuSelectMode.SetDelButtonMode2(Mode2Pressed);
@@ -28,7 +28,7 @@ public class GSMenuSelectMode : GameStateBase {
 	public override void ExitState () {
 		base.ExitState ();
 		
-		ctrlUIMenuSelectMode.SetVisibility(false);
+		ctrlUIMenuSelectMode.SetVisible(false);
 	}
 	
 	public override bool IsFinished() {

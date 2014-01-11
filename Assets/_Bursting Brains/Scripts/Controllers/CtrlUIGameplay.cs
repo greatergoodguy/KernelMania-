@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CtrlUIGameplay : MonoBehaviour {
+public class CtrlUIGameplay : BaseCtrl {
+	
+	public delegate void DelOnTimerFinish();
 	
 	private static readonly string LABEL_SCORE = "Score   ";
 	private static readonly string LABEL_TIMER = "Timer   ";
 	
 	//private static readonly float TIMER_VALUE_DEFAULT_IN_SECONDS = 180f;
 	private static readonly float TIMER_VALUE_DEFAULT_IN_SECONDS = 10f;
+	
+	DelOnTimerFinish delOnTimerFinish = UtilMock.MockFunction;
 	
 	tk2dTextMesh scoreTextTM;
 	int totalScore;
@@ -23,15 +27,22 @@ public class CtrlUIGameplay : MonoBehaviour {
 		
 		scoreTextTM = transform.FindChild_BB("Score Text").GetComponent_BB<tk2dTextMesh>();
 		totalScore = 0;
-		
-		
-		TimerSet(TIMER_VALUE_DEFAULT_IN_SECONDS);
-		TimerStart();
+	}
+	
+	void Start() {
+		SetVisible(false);		
 	}
 	
 	void Update() {
-		if(isTimerOn && timerValueInSeconds >= 0) {
+		if(isTimerOn) {
 			timerValueInSeconds -= Time.deltaTime;
+			
+			if(timerValueInSeconds < 0) {
+				timerValueInSeconds = 0;
+				TimerStop();
+				delOnTimerFinish();
+			}
+			
 			TimerSet(timerValueInSeconds);
 		}
 	}
@@ -43,7 +54,11 @@ public class CtrlUIGameplay : MonoBehaviour {
         scoreTextTM.Commit();
 	}
 	
-	public void TimerSet(float timerValueInSeconds) {
+	public void TimerSet() {
+		TimerSet(TIMER_VALUE_DEFAULT_IN_SECONDS);
+	}
+	
+	private void TimerSet(float timerValueInSeconds) {
 		this.timerValueInSeconds = timerValueInSeconds;
 		
 		int remainingSeconds = (int) timerValueInSeconds;
@@ -68,5 +83,9 @@ public class CtrlUIGameplay : MonoBehaviour {
 	
 	public void TimerStop() {
 		isTimerOn = false;
+	}
+	
+	public void SetDelOnTimerFinish(DelOnTimerFinish delOnTimerFinish) {
+		this.delOnTimerFinish = delOnTimerFinish;
 	}
 }
