@@ -3,8 +3,16 @@ using System.Collections;
 
 public class PopcornKernel : MonoBehaviour {
 	
+	private static readonly int LAUNCH_ANGLE_MIN_IN_DEGREES = 20;
+	private static readonly int LAUNCH_ANGLE_MAX_IN_DEGREES = 100;
+	
+	private static readonly float LAUNCH_FORCE_MIN = 250;
+	private static readonly float LAUNCH_FORCE_MAX = 500;
+	
 	readonly int SCORE_AMOUNT = 1000;
 	readonly bool isPlatformMobile = UtilPlatform.IsMobile();
+	
+	Vector3 spawnPositionOffset = new Vector3(0, 0, 1);
 	
 	CtrlUIDebug ctrlUIDebug;
 	CtrlUIGameplay ctrlUIGameplay;
@@ -36,8 +44,13 @@ public class PopcornKernel : MonoBehaviour {
 	void OnClickDown() {
 		ctrlUIGameplay.IncreaseScore(SCORE_AMOUNT);	
 		GameObject popcornPoppedGO = FactoryOfPrefabs.CreateGOPopcornPopped();
-		popcornPoppedGO.transform.position = transform.position;
-		Destroy(gameObject);
+		popcornPoppedGO.transform.position = transform.position + spawnPositionOffset;
+		
+		float angleInRadians = Random.Range(LAUNCH_ANGLE_MIN_IN_DEGREES, LAUNCH_ANGLE_MAX_IN_DEGREES) * Mathf.Deg2Rad;
+		float forceX = Random.Range(LAUNCH_FORCE_MIN, LAUNCH_FORCE_MAX) * Mathf.Cos(angleInRadians);
+		float forceY = Random.Range(LAUNCH_FORCE_MIN, LAUNCH_FORCE_MAX) * Mathf.Sin(angleInRadians);
+		
+		popcornPoppedGO.rigidbody.AddForce(forceX, forceY, 0);Destroy(gameObject);
 	}
 	
 	//=====================================

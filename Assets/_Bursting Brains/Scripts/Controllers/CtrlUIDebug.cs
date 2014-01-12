@@ -15,6 +15,10 @@ public class CtrlUIDebug : BaseCtrl {
 		SetPositionToOrigin();
 	}
 	
+	void Start() {
+		SetVisible(false);	
+	}
+	
 	public void Button1() {
 		SetText1TM("Debug Button 1");
 	}

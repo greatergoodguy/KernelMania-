@@ -31,7 +31,7 @@ public class GSMode1 : GameStateBase {
 		ctrlGameplay.TurnOnAllPopcornMachines();
 		
 		ctrlUIGameplay.SetVisible(true);
-		ctrlUIGameplay.TimerSet();
+		ctrlUIGameplay.TimerSet(Constants.DURATION_MODE_1_IN_SECONDS);
 		ctrlUIGameplay.TimerStart();
 		ctrlUIGameplay.SetDelOnTimerFinish(OnTimerFinish);
 		
@@ -52,19 +52,16 @@ public class GSMode1 : GameStateBase {
 	
 	public override void ExitState () {
 		base.ExitState();
-		ctrlBackground.SetBgGray();
 		ctrlGameplay.TurnOffAllPopcornMachines();
 		ctrlAudio.MusicStop();
-		
-		ctrlUIGameplay.SetVisible(false);
 	}
 	
 	public override bool IsFinished() {
-		return false;
+		return isFinished;
 	}
 	
 	public override IGameState GetNextGameState() {
-		return null;
+		return GameFlow.gsMode1End;
 	}
 	
 	private void OnTimerFinish() {

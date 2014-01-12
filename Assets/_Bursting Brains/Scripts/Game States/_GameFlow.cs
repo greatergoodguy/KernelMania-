@@ -16,6 +16,7 @@ public class GameFlow {
 	public static readonly IGameState gsMenuStart 		= new GSMenuStart();
 	public static readonly IGameState gsMenuSelectMode 	= new GSMenuSelectMode();
 	public static readonly IGameState gsMode1 			= new GSMode1();
+	public static readonly IGameState gsMode1End 		= new GSMode1End();
 	public static readonly IGameState gsMode2 			= new GSMode2();
 	public static readonly IGameState gsMode3 			= new GSMode3();
 	public static readonly IGameState gsEndGame 		= new GSEndGame();

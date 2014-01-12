@@ -8,9 +8,6 @@ public class CtrlUIGameplay : BaseCtrl {
 	private static readonly string LABEL_SCORE = "Score   ";
 	private static readonly string LABEL_TIMER = "Timer   ";
 	
-	//private static readonly float TIMER_VALUE_DEFAULT_IN_SECONDS = 180f;
-	private static readonly float TIMER_VALUE_DEFAULT_IN_SECONDS = 10f;
-	
 	DelOnTimerFinish delOnTimerFinish = UtilMock.MockFunction;
 	
 	tk2dTextMesh scoreTextTM;
@@ -54,11 +51,7 @@ public class CtrlUIGameplay : BaseCtrl {
         scoreTextTM.Commit();
 	}
 	
-	public void TimerSet() {
-		TimerSet(TIMER_VALUE_DEFAULT_IN_SECONDS);
-	}
-	
-	private void TimerSet(float timerValueInSeconds) {
+	public void TimerSet(float timerValueInSeconds) {
 		this.timerValueInSeconds = timerValueInSeconds;
 		
 		int remainingSeconds = (int) timerValueInSeconds;
