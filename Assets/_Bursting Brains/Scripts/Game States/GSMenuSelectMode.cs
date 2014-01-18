@@ -48,6 +48,7 @@ public class GSMenuSelectMode : GameStateBase {
 		isFinished = true;
 		nextGameState = GameFlow.gsMode2;
 	}
+	
 	public void Mode3Pressed() {
 		isFinished = true;
 		nextGameState = GameFlow.gsMode3;

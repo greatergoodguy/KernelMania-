@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CtrlGameplay : MonoBehaviour {
+public class CtrlGameplayPopcorn : MonoBehaviour {
 	
-	public PopcornMachine popcornMachine1;
+	PopcornMachine popcornMachine1;
 	
 	void Awake() {
 		popcornMachine1 = transform.FindChild_BB("Popcorn Machine 1").GetComponent_BB<PopcornMachine>();
@@ -19,5 +19,9 @@ public class CtrlGameplay : MonoBehaviour {
 	
 	public void TurnOnAllPopcornMachines() {
 		popcornMachine1.TurnOn();
+	}
+	
+	public PopcornMachine GetPopcornMachine1() {
+		return popcornMachine1;
 	}
 }

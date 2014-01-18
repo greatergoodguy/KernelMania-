@@ -7,7 +7,7 @@ public class GSMode1 : GameStateBase {
 	
 	CtrlBackground 	ctrlBackground;
 	CtrlAudio 		ctrlAudio;
-	CtrlGameplay 	ctrlGameplay;
+	CtrlGameplayPopcorn 	ctrlGameplay;
 	CtrlUIGameplay 	ctrlUIGameplay;
 	
 	CtrlUIDebug ctrlUIDebug;
@@ -18,7 +18,7 @@ public class GSMode1 : GameStateBase {
 	public GSMode1() {
 		ctrlBackground	= FactoryOfControllers.GetCtrlBackground();
 		ctrlAudio 		= FactoryOfControllers.GetCtrlAudio();
-		ctrlGameplay 	= FactoryOfControllers.GetCtrlGameplay();
+		ctrlGameplay 	= FactoryOfControllers.GetCtrlGameplayPopcorn();
 		ctrlUIGameplay 	= FactoryOfControllers.GetCtrlUIGameplay();
 		
 		ctrlUIDebug = FactoryOfControllers.GetCtrlUIDebug();
@@ -46,7 +46,7 @@ public class GSMode1 : GameStateBase {
 		if(timer >= TIMER_SPAWN_KERNEL) {
 			timer = 0;
 			
-			ctrlGameplay.popcornMachine1.SpawnKernel();
+			ctrlGameplay.GetPopcornMachine1().SpawnKernel();
 		}
 	}
 	

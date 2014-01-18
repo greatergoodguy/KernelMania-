@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class CtrlUIGameplay : BaseCtrl {
+public class CtrlUIGameplay : Ctrl_BaseUI {
 	
 	public delegate void DelOnTimerFinish();
 	

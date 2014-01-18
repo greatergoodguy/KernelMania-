@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CtrlUIMenuStart : BaseCtrl {
+public class CtrlUIMenuStart : Ctrl_BaseUI {
 	
 	DelButton delButtonPlayGame = UtilMock.MockFunction;
 	

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CtrlUIDebug : BaseCtrl {
+public class CtrlUIDebug : Ctrl_BaseUI {
 	
 	CtrlUIGameplay ctrlUIGameplay;
 	

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public abstract class BaseCtrl : MonoBehaviour{
+public abstract class Ctrl_BaseUI : Ctrl_Base {
 		
 	public void SetVisible(bool isVisible) {
 		if(isVisible) 	gameObject.SetActive(true);

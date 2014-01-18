@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public static class FactoryOfControllers {
@@ -27,14 +27,21 @@ public static class FactoryOfControllers {
     	return ctrlUIMenuSelectMode;
 	}
 	
-	static CtrlGameplay ctrlGameplay;
-	public static CtrlGameplay GetCtrlGameplay() {
-		if(ctrlGameplay == null)
-        	ctrlGameplay = GameObject.Find("Gameplay").GetComponent_BB<CtrlGameplay>();
+	static CtrlGameplayPopcorn ctrlGameplayPopcorn;
+	public static CtrlGameplayPopcorn GetCtrlGameplayPopcorn() {
+		if(ctrlGameplayPopcorn == null)
+        	ctrlGameplayPopcorn = GameObject.Find("Gameplay Popcorn").GetComponent_BB<CtrlGameplayPopcorn>();
                 
-    	return ctrlGameplay;
+    	return ctrlGameplayPopcorn;
 	}
 	
+	static CtrlGameplayTrivia ctrlGameplayTrivia;
+	public static CtrlGameplayTrivia GetCtrlGameplayTrivia() {
+		if(ctrlGameplayTrivia == null)
+        	ctrlGameplayTrivia = GameObject.Find("Gameplay Trivia").GetComponent_BB<CtrlGameplayTrivia>();
+                
+    	return ctrlGameplayTrivia;
+	}
 	
 	static CtrlUIGameplay ctrlUIGameplay;
 	public static CtrlUIGameplay GetCtrlUIGameplay() {

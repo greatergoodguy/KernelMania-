@@ -5,32 +5,38 @@ public class CtrlBackground : MonoBehaviour {
 	
 	GameObject bgGray;
 	GameObject bgTheater;
+	GameObject bgCathedral;
 	
 	GameObject activeBG;
 	
 	void Awake() {
 		bgGray = transform.FindChild_BB("Gray").gameObject;	
-		bgTheater = transform.FindChild_BB("Theater").gameObject;	
-		
 		bgGray.SetActive(false);
+	
+		bgTheater = transform.FindChild_BB("Theater").gameObject;	
 		bgTheater.SetActive(false);
+		
+		bgCathedral = transform.FindChild_BB("Cathedral").gameObject;	
+		bgCathedral.SetActive(false);
 		
 		activeBG = UtilMock.GetMockGameObject();
 	}
 	
 	void Start() {
-		SetBgGray();
-	}
+		SetBgGray();}
 	
 	public void SetBgGray() {
-		activeBG.SetActive(false);	
-		activeBG = bgGray;
-		activeBG.SetActive(true);
-	}
+		SetBG(bgGray);}
 	
 	public void SetBgTheater() {
+		SetBG(bgTheater);}
+	
+	public void SetBgCathedral() {
+		SetBG(bgCathedral);}
+	
+	private void SetBG(GameObject backgroundGO) {
 		activeBG.SetActive(false);	
-		activeBG = bgTheater;
+		activeBG = backgroundGO;
 		activeBG.SetActive(true);
 	}
 }
